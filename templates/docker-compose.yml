@@ -1,0 +1,23 @@
+version: "3.5"
+
+services:
+  gocd:
+    image: "gocd/gocd-server:v23.3.0"
+    environment:
+{% if gocd_git_configuration_enabled %}
+      - "CONFIG_GIT_REPO={{ gocd_git_repo }}"
+{% if gocd_git_branch != "" %}
+      - "CONFIG_GIT_BRANCH={{ gocd_git_branch }}"
+{% endif %}
+{% endif %}
+{% if gocd_plugins != "" %}
+{% for plugin in gocd_plugins %}
+      - "GOCD_PLUGIN_INSTALL_{{ plugin.split('/')[-1][:-4] }}-plugin={{ plugin }}"
+{% endfor %}
+{% endif %}
+    ports:
+    - 8153:8153
+    volumes:
+    - "{{ gocd_data_dir }}:/godata"
+    - "{{ gocd_home_dir }}:/home/go"
+  

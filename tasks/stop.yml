@@ -1,0 +1,5 @@
+---
+- name: Stop gocd
+  command: docker-compose stop
+  args:
+    chdir: "{{ gocd_deploy_dir }}"

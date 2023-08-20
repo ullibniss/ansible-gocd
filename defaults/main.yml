@@ -1,0 +1,12 @@
+gocd_deploy_dir: "/opt/gocd"
+gocd_data_dir: "{{ gocd_deploy_dir }}/data"
+gocd_home_dir: "{{ gocd_deploy_dir }}/home"
+
+gocd_git_configuration_enabled: false
+gocd_git_branch: ""
+
+gocd_plugins: 
+  - "https://github.com/gocd/gocd-analytics-plugin/releases/download/v3.1.0-818/gocd-analytics-plugin-3.1.0-818.jar"
+  - "https://github.com/gocd/docker-registry-artifact-plugin/releases/download/v1.4.0-501/docker-registry-artifact-plugin-1.4.0-501.jar"
+default_user: "{{ lookup('env', 'USER') }}"
+

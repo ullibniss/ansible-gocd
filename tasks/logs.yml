@@ -1,0 +1,5 @@
+---
+- name: Get logs for gocd
+  command: docker-compose logs
+  args:
+    chdir: "{{ gocd_deploy_dir }}"

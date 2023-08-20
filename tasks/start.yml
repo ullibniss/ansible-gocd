@@ -1,0 +1,5 @@
+---
+- name: Start gocd
+  command: docker-compose up -d
+  args:
+    chdir: "{{ gocd_deploy_dir }}"
